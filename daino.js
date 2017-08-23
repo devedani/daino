@@ -4,7 +4,6 @@ const ffmpeg = require("ffmpeg-binaries");
 
 const TOKEN = "nope";
 const PREFIX = ">";
-const dispatcher = connection.playFile('C:/Users/User/Downloads/bensound-memories.mp3');
 
 var bot = new Discord.Client();
 
@@ -17,7 +16,8 @@ var fortunes = [
 
 
 var coinflip = [
-    
+    "Heads!",
+    "Tails!"
 ];
 
 bot.on("ready", function() {
@@ -33,20 +33,6 @@ client.on('message', message => {
     if (!message.guild) return;
 });
 
-
-
-dispatcher.on('end', () => {
-message.member.voiceChannel.leave()
-});
-
-dispatcher.on('error', e => {
-    console.log(e);
-});
-
-dispatcher.setVolume(0.5);
-dispatcher.setVolume(1);
-
-
     bot.on("message", function(message) {
     if (message.author.equals(bot.user)) return;
 
@@ -58,22 +44,6 @@ dispatcher.setVolume(1);
     switch (args[0].toLowerCase()) {
         case "ding":
             message.channel.send("dong!");
-            break;
-            case "volume50":
-            message.channel.send("volume set to 50%");
-            dispatcher.setVolume(0.5);
-            break;
-            case "volume100":
-            dispatcher.setVolume(1);
-            message.channel.send("volume set to 100%");
-            break;
-            case "pause":
-            dispatcher.pause();
-            message.channel.send("music paused.");
-            break;
-            case "resume":
-            dispatcher.resume();
-            message.channel.send("music resumed.");
             break;
             case "yoink":
                 message.channel.send("doink");
@@ -129,15 +99,7 @@ case "leave":
 dispatcher.end();
 message.member.voiceChannel.leave()
 break;
-
-case "play":
-if (message.member.voiceChannel) {
-    message.member.voiceChannel.join()
-    .then(connection => {
-        message.reply('I have successfully connected to voice!');
     
-connection.playFile('C:/Users/User/Downloads/bensound-memories.mp3');
-})};
 case "headliners1":
 message.channel.send("http://i.imgur.com/pbstbwZ.png ,  >chatsim to start"); 
 break;
