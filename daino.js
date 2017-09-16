@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const ffmpeg = require("ffmpeg-binaries");
 
-const TOKEN = "nope";
+const TOKEN = "";
 const PREFIX = ">";
 
 var bot = new Discord.Client();
@@ -16,8 +16,7 @@ var fortunes = [
 
 
 var coinflip = [
-    "Heads!",
-    "Tails!"
+    
 ];
 
 bot.on("ready", function() {
@@ -81,25 +80,6 @@ client.on('message', message => {
                     break;
                     }
             
-                 case "join":
-                 if (message.member.voiceChannel) {
-                     message.member.voiceChannel.join()
-                     .then(connection => {
-                         message.reply('I have successfully connected to your voice channel!');
-                     })
-                      .catch(console.log);
-                      
-                 } else {
-message.reply('You need to join a voice channel first!');
-
-                 }
-break;
-
-case "leave":
-dispatcher.end();
-message.member.voiceChannel.leave()
-break;
-    
 case "headliners1":
 message.channel.send("http://i.imgur.com/pbstbwZ.png ,  >chatsim to start"); 
 break;
